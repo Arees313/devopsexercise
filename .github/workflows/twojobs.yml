@@ -3,7 +3,7 @@ name: Multi Job Workflow
 # Trigger the workflow based on a schedule
 on:
   schedule:
-    - cron: '10 13 * * *' # Runs daily at 14:10 CET (13:10 UTC)
+    - cron: '15 13 * * *' # Runs daily at 14:10 CET (13:10 UTC)
 
 jobs:
   setup-greeting:
