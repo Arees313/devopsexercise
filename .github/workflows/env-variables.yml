@@ -1,0 +1,27 @@
+name: Environment Variables Demo
+
+# Triggar workflow manuellt via GitHub
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  demo-job:
+    runs-on: ubuntu-latest
+
+    # Definiera miljövariabler
+    env:
+      GREETING: "Hello"
+      NAME: "World"
+
+    steps:
+    - name: Print Greeting
+      run: |
+        echo "Using Environment Variables:"
+        echo "$GREETING, $NAME!"
+        echo "Printing GitHub Variables:"
+        echo "Repository: ${{ github.repository }}"
+        echo "Workflow: ${{ github.workflow }}"
+        echo "Actor: ${{ github.actor }}"
