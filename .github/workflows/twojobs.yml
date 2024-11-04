@@ -1,10 +1,9 @@
 name: Multi Job Workflow
 
-# Trigger the workflow on push or manually via dispatch
+# Trigger the workflow based on a schedule and allow manual dispatch
 on:
-  push:
-    branches:
-      - main  # Specify the branch to trigger on push
+  schedule:
+    - cron: '40 12 * * *' # Runs daily at 14:40 CEST (12:40 UTC)
   workflow_dispatch:  # Allow manual trigger
 
 jobs:
