@@ -14,20 +14,24 @@ jobs:
       NAME: "World"
 
     steps:
-    - name: Set up greeting message
-      run: |
-        echo "Greeting: $GREETING, $NAME!"
-        echo "Greeting message has been set up."
+      - name: Set up greeting message
+        run: |
+          echo "Greeting: $GREETING, $NAME!"
+          echo "Greeting message has been set up."
 
   print-greeting:
     runs-on: ubuntu-latest
     needs: setup-greeting
 
+    env:  # Define the same environment variables here
+      GREETING: "Hello"
+      NAME: "World"
+
     steps:
-    - name: Print Greeting with Secret
-      env:
-        MY_SECRET: ${{ secrets.MY_SECRET }} # Use a secret stored in GitHub repository settings
-      run: |
-        echo "Using Environment Variables from setup-greeting:"
-        echo "$GREETING, $NAME!"
-        echo "Secret from settings: $MY_SECRET"
+      - name: Print Greeting with Secret
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}  # Use a secret stored in GitHub repository settings
+        run: |
+          echo "Using Environment Variables from setup-greeting:"
+          echo "$GREETING, $NAME!"
+          echo "Secret from settings: $MY_SECRET"
